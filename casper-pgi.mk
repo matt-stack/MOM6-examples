@@ -6,10 +6,10 @@
 # commands #
 ############
 
-FC = pgf90
-CC = pgcc
-CXX = pgc++
-LD = pgf90
+FC = mpif90
+CC = mpicc
+CXX = mpic++
+LD = mpif90
 
 ############
 #  flags   #
@@ -24,7 +24,8 @@ MAKEFLAGS += --jobs=8
 
 FPPFLAGS :=
 
-FFLAGS := -i4 -r8 -traceback -acc -ta=tesla:cc70 -Minfo=accel
+#FFLAGS := -i4 -r8 -traceback -acc -ta=tesla:cc70 -Minfo=accel
+FFLAGS := -i4 -r8 -traceback
 FFLAGS_OPT = -O3
 FFLAGS_DEBUG = -g -O0 
 FFLAGS_REPRO = -O2 
@@ -36,6 +37,7 @@ CFLAGS_OPT = -O2
 CFLAGS_OPENMP = -mp
 CFLAGS_DEBUG = -O0 -g -ftrapuv
 
+#LDFLAGS := -acc -ta=tesla:cc70 -Minfo=accel
 LDFLAGS :=
 LDFLAGS_OPENMP := -mp
 LDFLAGS_VERBOSE := -Wl,-V,--verbose,-cref,-M
